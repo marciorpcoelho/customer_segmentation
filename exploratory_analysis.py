@@ -82,7 +82,7 @@ def graph_component_silhouette(X, n_clusters, lim_x, mat_size, sample_silhouette
     plt.style.use('fivethirtyeight')
     matplotlib.rc('patch', edgecolor='dimgray', linewidth=1)
 
-    if cluster_labels:
+    if cluster_labels.any():
         fig, (ax1, ax2) = plt.subplots(1, 2)
         fig.set_size_inches(16, 8)
     elif not cluster_labels:
@@ -113,7 +113,7 @@ def graph_component_silhouette(X, n_clusters, lim_x, mat_size, sample_silhouette
     ax1.set_xlabel("Silhouette Coefficient Values")
     ax1.set_ylabel("Cluster label")
 
-    if cluster_labels:
+    if cluster_labels.any():
         colors = cm.nipy_spectral(cluster_labels.astype(float) / n_clusters)
         ax2.scatter(X[:, 0], X[:, 1], marker='.', s=30, lw=0, alpha=0.7, c=colors, edgecolor='k')
 
@@ -135,7 +135,7 @@ def graph_component_silhouette(X, n_clusters, lim_x, mat_size, sample_silhouette
     wm = plt.get_current_fig_manager()
     wm.window.wm_geometry("-1500-100")
     save_fig('2_customer_segmentation_' + str(method) + '_' + str(n_clusters) + '_cluster')
-    # plt.show()
+    plt.show()
 
 
 # 3

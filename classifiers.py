@@ -45,4 +45,4 @@ class KMeansCluster(object):
 
     def silhouette_score(self, X, clusters):
         self.shilhouette_avg = silhouette_score(X, clusters)
-        print('For ', k, 'clusters, the average silhouette score is:', self.shilhouette_avg)
+        print('For ', 'clusters, the average silhouette score is:', self.shilhouette_avg)

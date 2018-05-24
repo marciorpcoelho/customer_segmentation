@@ -5,8 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from exploratory_analysis import pca_analysis_representation
 from sklearn.feature_selection import SelectKBest, mutual_info_regression
 from sklearn.decomposition import FactorAnalysis
-
-
+from gap_statistic import OptimalK
 
 
 def null_analysis(df):
@@ -76,3 +75,12 @@ def factor_analysis(df, n_components, max_iterations):
     factor_components = pd.DataFrame(factor.components_, columns=list(df))
 
     return factor_components
+
+
+def gap_optimalk(matrix):
+
+    optimalk = OptimalK(parallel_backend='joblib')
+    k = optimalk(matrix, cluster_array=np.arange(1, 20))
+    print('\nOptimal number of clusters is ', k)
+
+    return k
