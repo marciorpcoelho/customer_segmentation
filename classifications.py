@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 import itertools
 import time
+from minisom import MiniSom
 import sys
 
 
@@ -66,7 +67,7 @@ def main():
     clustering = 1
     max_clusters = 20
 
-    df = df_sales_creation(all_data=0).sample(frac=0.2, axis=0)
+    df = df_sales_creation(all_data=0).sample(frac=0.1, axis=0)
     # df = df_sales_creation(all_data=0)
 
     const_col_removal(df)

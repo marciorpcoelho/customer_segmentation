@@ -13,11 +13,14 @@ __author__ = 'mrpc'
 
 def histogram(series, relative=1, bins=100):
     # Creates an histogram for the values at hand
+    try:
+        quartile = series.quantile(0.75)
+    except AttributeError:
+        quartile = np.percentile(series, 75)
 
-    # max_value = (abs(series.min()) + abs(series.max()))
-    quartile = series.quantile(0.75)
     n, bin_edge = np.histogram(series, bins=np.arange(0, quartile, round(quartile / bins)))
     if relative:
+        print('testing?')
         n = n * 100 / n.sum()
     bincenters = 0.5 * (bin_edge[1:] + bin_edge[:-1])
     return bincenters, n
@@ -162,6 +165,39 @@ def pca_analysis_representation(pca, matrix):
     wm.window.wm_geometry("-1500-100")
     plt.tight_layout()
     plt.show()
+
+
+# 4
+def time_to_pse_dist(franchise_ttpse, franchises, new, bins=25, relative_freq=0):
+
+    my_dpi = 96
+    plt.subplots(figsize=(1500 / my_dpi, 800 / my_dpi), dpi=my_dpi)
+    for franchise in franchise_ttpse:
+        bincenters_open, n_open = histogram(franchise, relative=relative_freq, bins=bins)
+        plt.plot(bincenters_open, n_open, label=str(franchises[(franchise_ttpse.index(franchise))] + ' - ' + str(len(franchise)) + str(' vehicles sold.')))
+
+    wm = plt.get_current_fig_manager()
+    wm.window.wm_geometry("-1500-100")
+
+    plt.xlabel('Days to PSE')
+    if relative_freq:
+        plt.ylabel('Relative Value (%)')
+    if not relative_freq:
+        plt.ylabel('Absolute Value')
+
+    plt.xticks(range(0,261,15), range(0,261,15))
+    plt.legend()
+    plt.grid()
+    plt.tight_layout()
+    if new:
+        plt.title('Time to PSE - Franchise - New Vehicles')
+        save_fig('4_time_to_pse_new')
+    if not new:
+        plt.title('Time to PSE - Franchise - Used Vehicles')
+        save_fig('4_time_to_pse_used')
+    plt.show()
+
+
 
 
 

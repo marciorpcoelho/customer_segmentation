@@ -91,12 +91,12 @@ def df_sales_creation(all_data=0, remake_df=0):
                                  'lastTransactionValue': df_paid_sorted_grouped.apply(lambda x: list(x)[-1]),
                                  'MeanPaidTransactions': df_paid_grouped['transactionValue'].mean(),  #Calculates the average value of each transaction
                                  '#OpenTransactions': df_open_grouped.size(),  # Counts and aggregates the number of open transactions
-                                 'TA_OpenTransactions':df_open[df_open['transactionType'] == 'TA'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
-                                 'RE_OpenTransactions':df_open[df_open['transactionType'] == 'RE'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
-                                 'CM_OpenTransactions':df_open[df_open['transactionType'] == 'CM'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
-                                 'FI_OpenTransactions':df_open[df_open['transactionType'] == 'FI'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
-                                 'VN_OpenTransactions':df_open[df_open['transactionType'] == 'VN'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
-                                 'VO_OpenTransactions':df_open[df_open['transactionType'] == 'VO'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
+                                 'TA_OpenTransactions': df_open[df_open['transactionType'] == 'TA'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
+                                 'RE_OpenTransactions': df_open[df_open['transactionType'] == 'RE'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
+                                 'CM_OpenTransactions': df_open[df_open['transactionType'] == 'CM'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
+                                 'FI_OpenTransactions': df_open[df_open['transactionType'] == 'FI'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
+                                 'VN_OpenTransactions': df_open[df_open['transactionType'] == 'VN'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
+                                 'VO_OpenTransactions': df_open[df_open['transactionType'] == 'VO'].groupby(['SLR_Account'])['transactionValue'].sum().astype(float),
                                  'SumOpenTransactions': df_open_grouped['transactionValue'].sum(),  # Sums and aggregates the total value of all open transactions
                                  'MeanOpenTransactions': df_open_grouped['transactionValue'].mean(),
                                  '#Transactions': df_paid_grouped.size().add(df_open_grouped.size(), fill_value=0),  # Counts and aggregates the total number of transactions

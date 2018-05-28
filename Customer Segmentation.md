@@ -30,7 +30,7 @@ In total, 7225 entries were removed from PaidTransactions, and 47 from OpenTrans
 The VHE_Sales provides the number of cars bought by each client. As such, it can be converted to a single column referring to the number of bought vehicles, counting on the number of unique Registration_Number per client. Also added is their respective total_invoice, separated by new and used vehicles.  
 Also created, are the total per transaction type separated between Paid and Open transactions.
 
-**5<sup>th</sup> step: time period selection**  
+**5<sup>th</sup> step: Time period selection**  
 Since all the databases have their own unique time interval, the focus was on the common period across all, which is the full year of 2017.
 
 
@@ -39,5 +39,5 @@ Transaction Value Analysis:
 
 ![](./output/1_transaction_distribution_2017.png)
 
-First analysis, shows the expected decreases in number of transactions, as their value increase. Also noticeable is the higher cost of new vehicles when compared to used ones.
+First analysis shows the expected decreases in number of transactions, as their value increase. Also noticeable is the higher cost of new vehicles when compared to used ones.
 Also relevant are the considerable high frequency of low cost transactions associated with new vehicles - **Need to look into this.** 
